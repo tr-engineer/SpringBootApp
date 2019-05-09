@@ -1,6 +1,5 @@
-FROM scratch
-EXPOSE 80
-
-COPY http-server /
-
-CMD ["/http-server"]
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]	
